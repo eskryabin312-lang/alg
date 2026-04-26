@@ -1,0 +1,100 @@
+from turtle import *
+import pygame
+pygame.init()
+
+# Переменные состояния
+current_color = 'black'      # Текущий цвет кисти
+pen_width = 5                # Ширина кисти по умолчанию
+
+back = (200, 260, 255)
+mw = pygame.display.set_mode((400, 400))
+mw.fill(back)
+
+# Черепашка
+t1 = Turtle()
+t1.pendown()
+t1.color(current_color)
+t1.shape('turtle')
+t1.speed(5)
+t1.width(pen_width)          # Устанавливаем начальную ширину кисти
+
+# --- ФУНКЦИИ ---
+
+# Регулируем размеры кисти
+def increase_pen_size():
+    global pen_width
+    pen_width += 1           # увеличиваем ширину кисти
+    t1.width(pen_width)
+
+def decrease_pen_size():
+    global pen_width
+    if pen_width > 1:        # уменьшаем ширину кисти, пока не станет равной 1
+        pen_width -= 1
+        t1.width(pen_width)
+
+# Смена цвета кисти
+def set_color(color_name):
+    global current_color
+    current_color = color_name
+    t1.color(current_color)
+
+# Перемещаемся по экрану без рисования
+def move(x, y):
+    t1.penup()
+    t1.goto(x, y)
+    t1.pendown()
+
+# Продолжаем рисовать при перетаскивании
+def draw(x, y):
+    t1.goto(x, y)
+
+# --- СОЗДАЕМ ЭКРАН ---
+scr = Screen()
+
+# Привязываем управляющие клавиши
+scr.onkey(lambda: set_color('green'), 'g')     # Зеленый цвет
+scr.onkey(lambda: set_color('red'), 'r')       # Красный цвет
+scr.onkey(lambda: set_color('blue'), 'b')      # Синий цвет
+scr.onkey(lambda: set_color('black'), 'h')     # Черный цвет
+scr.onkey(lambda: set_color('white'), 'w')     # Белый цвет (ластик)
+scr.onkey(lambda: set_color('yellow'), 'y')
+scr.onkey(lambda: set_color('orange'), 'o')
+scr.onkey(lambda: set_color('violet'), 'v')
+scr.onkey(lambda: set_color('pink'), 'p')
+scr.onkey(lambda: set_color('aqua'), 'a')
+
+
+# Управление размерами кисти
+scr.onkey(increase_pen_size, 'e')              # увеличить кисть
+scr.onkey(decrease_pen_size, 'q')              # уменьшить кисть
+
+# Управляющие клавиши для передвижения черепашки
+scr.onkey(lambda: t1.forward(5), 'Right')     # Вперед
+scr.onkey(lambda: t1.backward(5), 'Left')      # Назад
+scr.onkey(lambda: t1.left(90), 'Up')          # Поворот влево
+scr.onkey(lambda: t1.right(90), 'Down')       # Поворот направо
+
+# Перетаскивание мыши (чтобы рисовать)
+t1.ondrag(draw)
+
+# Приложение реагирует на клики мыши
+scr.onscreenclick(move)
+
+# Активируем обработку событий
+scr.listen()
+
+# Стартуем главный цикл программы
+done()
+
+print('red = r')
+print('orange = o')
+print('yellow = y')
+print('green = g')
+print('aqua = a')
+print('blue = b')
+print('violet = v')
+print('pink = p')
+print('black = h')
+print('white = w')
+print('increase pensize = e')
+print('decrease pensize = q')
