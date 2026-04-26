@@ -7,7 +7,7 @@ current_color = 'red'      # Текущий цвет кисти
 pen_width = 10                # Ширина кисти по умолчанию
 
 back = (200, 260, 255)
-mw = pygame.display.set_mode((400, 400))
+mw = pygame.display.set_mode((300, 300))
 mw.fill(back)
 
 # Черепашка
@@ -15,7 +15,7 @@ t1 = Turtle()
 t1.pendown()
 t1.color(current_color)
 t1.shape('triangle')
-t1.speed(5)
+t1.speed(10)
 t1.width(pen_width)          # Устанавливаем начальную ширину кисти
 
 # --- ФУНКЦИИ ---
