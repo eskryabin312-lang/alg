@@ -4,7 +4,7 @@ pygame.init()
 
 # Переменные состояния
 current_color = 'black'      # Текущий цвет кисти
-pen_width = 555                # Ширина кисти по умолчанию
+pen_width = 300                # Ширина кисти по умолчанию
 
 back = (200, 260, 255)
 mw = pygame.display.set_mode((400, 400))
@@ -62,6 +62,7 @@ scr.onkey(lambda: set_color('orange'), 'o')
 scr.onkey(lambda: set_color('violet'), 'v')
 scr.onkey(lambda: set_color('pink'), 'p')
 scr.onkey(lambda: set_color('aqua'), 'a')
+scr.onkey(lambda: set_color('brown'), 'd')
 
 
 # Управление размерами кисти
@@ -95,6 +96,7 @@ print('blue = b')
 print('violet = v')
 print('pink = p')
 print('black = h')
+print('brown = d')
 print('white = w')
 print('increase pensize = e')
 print('decrease pensize = q')
