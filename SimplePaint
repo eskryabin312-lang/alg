@@ -4,7 +4,7 @@ pygame.init()
 
 # Переменные состояния
 current_color = 'red'      # Текущий цвет кисти
-pen_width = 10                # Ширина кисти по умолчанию
+pen_width = 11                # Ширина кисти по умолчанию
 
 back = (200, 260, 255)
 mw = pygame.display.set_mode((300, 300))
